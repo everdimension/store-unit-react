@@ -27,7 +27,7 @@
     "store-unit",
     "react"
   ],
-  "author": "everdimension",
+  "author": "everdimension <everdimension@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/everdimension/store-unit-react/issues"
