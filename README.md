@@ -17,9 +17,7 @@ npm install @store-unit/react
 import { Store } from 'store-unit';
 import { useStore } from '@store-unit/react';
 
-class ThemeStore extends Store<{ isLight: boolean }> {}
-
-const themeStore = new ThemeStore();
+const themeStore = new Store({ isLight: true });
 
 export function Component() {
   const value = useStore(themeStore);
