@@ -1,20 +1,26 @@
 import { useState, useEffect } from 'react';
 import type { Store } from 'store-unit';
 
-interface DisposableStore<T> extends Store<T> {
+type StorePublicInterface<T> = Omit<Store<T>, 'emitter'>;
+
+interface DisposableStore<T> extends StorePublicInterface<T> {
   dispose: () => void;
 }
 
 function isDisposableStore<T>(
-  store: Store<T> | DisposableStore<T>
+  store: StorePublicInterface<T> | DisposableStore<T>
 ): store is DisposableStore<T> {
   return 'dispose' in store && Boolean(store.dispose);
 }
 
-export function useStore<State>(store: Store<State> | DisposableStore<State>) {
-  const [value, setValue] = useState<Store<State>['state']>(() => {
-    return store.getState();
-  });
+export function useStore<State>(
+  store: StorePublicInterface<State> | DisposableStore<State>
+) {
+  const [value, setValue] = useState<StorePublicInterface<State>['state']>(
+    () => {
+      return store.getState();
+    }
+  );
   const newValue = store.getState();
   if (newValue !== value) {
     setValue(newValue);
