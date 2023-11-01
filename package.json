@@ -1,6 +1,6 @@
 {
   "name": "@store-unit/react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A React integration for store-unit, a watchable data unit for UIs",
   "type": "module",
   "source": "src/index.ts",
